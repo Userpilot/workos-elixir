@@ -26,7 +26,7 @@ defmodule WorkOS.DirectorySync do
       when is_map_key(params, :directory) or is_map_key(params, :user) do
     query =
       params
-      |> Map.take([:directory, :user])
+      |> Map.take([:directory, :user, :limit])
 
     Api.get("/directory_groups", query, opts)
   end
@@ -49,7 +49,7 @@ defmodule WorkOS.DirectorySync do
 
   def list_users(params, opts)
       when is_map_key(params, :directory) or is_map_key(params, :group) do
-    query = Map.take(params, [:directory, :user, :group])
+    query = Map.take(params, [:directory, :user, :group, :limit])
 
     Api.get("/directory_users", query, opts)
   end
